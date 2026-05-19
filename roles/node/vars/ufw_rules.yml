@@ -1,0 +1,13 @@
+---
+node_ufw_rules:
+  - port: "{{ espresso.validator.ports.p2p_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: p2p_port_tcp
+
+  - port: "{{ espresso.validator.ports.p2p_port }}"
+    proto: udp
+    rule: allow
+    from: any
+    comment: p2p_port_udp

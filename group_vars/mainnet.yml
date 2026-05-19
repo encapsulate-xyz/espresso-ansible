@@ -1,9 +1,16 @@
 ---
 # maintains versions and can overwrite all.yml
-sui:
+espresso:
   validator:
-    version: c9ae0f9282a0643544db27409e07d3ac5dd09105
-  fullnode:
-    version: c9ae0f9282a0643544db27409e07d3ac5dd09105
-  bridge:
-    version: 08a4ef986fdf44a2233f010c5e3764ae888c54a2
+    version: 20260512
+    peers_list: "https://cache.main.net.espresso.network/,https://query.main.net.espresso.network/,https://query-0.main.net.espresso.network/"
+    state_relay_url: "https://state-relay.main.net.espresso.network"
+    cdn_endpoint: "cdn.main.net.espresso.network:1737"
+    bootstrap_nodes:
+      - /dns/main-network-d26f3636a4e56b65.elb.us-east-2.amazonaws.com/udp/2000/quic-v1/p2p/12D3KooWDKf3RMqrRu7jsbsskPGbdPyzVknmzM7KtMUbR9obHACu
+      - /dns/main-network-d26f3636a4e56b65.elb.us-east-2.amazonaws.com/udp/2001/quic-v1/p2p/12D3KooWK9YtnNqFQ51by23zv6PmGdzrADf8HhzsPRAbyAM5MZh5
+      - /dns/main-network-d26f3636a4e56b65.elb.us-east-2.amazonaws.com/udp/2002/quic-v1/p2p/12D3KooWJK5yrh2h7QDbk53mQR3mYQKTfkkiJfTkPkifi6RFmgQc
+      - /dns/main-network-d26f3636a4e56b65.elb.us-east-2.amazonaws.com/udp/2003/quic-v1/p2p/12D3KooWGgju14hJGLeGds5Ey8vTDC5E9AhcZm86S4gx4b1ZHANA
+      - /dns/main-network-d26f3636a4e56b65.elb.us-east-2.amazonaws.com/udp/2004/quic-v1/p2p/12D3KooWLSztiG7tPdjJpPdN7H86SiVVBMRVjCT3AbtWGHRyUm2R
+    rust:
+      version: 1.95.0
