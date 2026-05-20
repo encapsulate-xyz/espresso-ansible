@@ -8,7 +8,7 @@
 
 - name: Build the binary
   ansible.builtin.command:
-    cmd: cargo build -p espresso-node --bin espresso-node -p staking-cli --bin staking-cli --release
+    cmd: cargo build -p espresso-node --bin espresso-node --bin keygen -p staking-cli --bin staking-cli --release
     chdir: "{{ tmp_dir }}/{{ project }}"
   register: build_binary
   changed_when: false
