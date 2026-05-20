@@ -31,6 +31,8 @@
       dest: "{{ node_binaries.espresso_node.dest_binary_name }}"
     - src: "{{ node_binaries.staking_cli.default_binary_name }}"
       dest: "{{ node_binaries.staking_cli.dest_binary_name }}"
+    - src: "{{ node_binaries.keygen.default_binary_name }}"
+      dest: "{{ node_binaries.keygen.dest_binary_name }}"
   notify:
     - Restart service
 

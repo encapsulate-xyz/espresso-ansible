@@ -16,3 +16,6 @@ node_binaries:
   staking_cli:
     default_binary_name: "staking-cli"
     dest_binary_name: "{{ service_identifier }}-cli"
+  keygen:
+    default_binary_name: "keygen"
+    dest_binary_name: "{{ service_identifier }}-keygen"
