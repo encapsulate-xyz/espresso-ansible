@@ -1,0 +1,21 @@
+---
+# maintains file name, binary names, and anything which is not a directory or path
+
+# config file name
+node_genesis_file_name: mainnet.toml
+
+# env file names
+node_environment_general_file_name: "{{ service_identifier }}.env"
+node_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
+
+# binary names
+node_binaries:
+  espresso_node:
+    default_binary_name: "espresso-node"
+    dest_binary_name: "{{ service_identifier }}"
+  staking_cli:
+    default_binary_name: "staking-cli"
+    dest_binary_name: "{{ service_identifier }}-cli"
+  keygen:
+    default_binary_name: "keygen"
+    dest_binary_name: "{{ service_identifier }}-keygen"

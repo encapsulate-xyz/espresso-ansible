@@ -4,11 +4,7 @@ all:
   vars:
     env: mainnet
   children:
-    sui:
+    espresso:
       hosts:
-        bridge.sui.mainnet.encapsulate.xyz:
-          type: bridge
-        validator.sui.mainnet.encapsulate.xyz:
+        ts.validator.espresso.mainnet.encapsulate.xyz:
           type: validator
-        fullnode.sui.mainnet.encapsulate.xyz:
-          type: fullnode

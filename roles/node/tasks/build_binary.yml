@@ -1,0 +1,42 @@
+---
+- name: Clone the repository
+  ansible.builtin.git:
+    repo: "{{ espresso.validator.source_url }}"
+    dest: "{{ tmp_dir }}/{{ project }}"
+    version: "{{ espresso.validator.version }}"
+    force: true
+
+- name: Build the binary
+  ansible.builtin.command:
+    cmd: cargo build -p espresso-node --bin espresso-node --bin keygen -p staking-cli --bin staking-cli --release
+    chdir: "{{ tmp_dir }}/{{ project }}"
+  register: build_binary
+  changed_when: false
+  environment:
+    PATH: "{{ rust.path }}/bin:{{ ansible_env.PATH }}"
+    RUSTUP_HOME: "{{ rust.root }}/cargo"
+    CARGO_HOME: "{{ rust.root }}/cargo"
+
+- name: Copy the built binaries to the target directory
+  ansible.builtin.copy:
+    src: "{{ tmp_dir }}/{{ project }}/target/release/{{ item.src }}"
+    dest: "{{ node_bin_dir }}/{{ item.dest }}"
+    mode: "0755"
+    owner: root
+    group: root
+    remote_src: true
+    force: true
+  loop:
+    - src: "{{ node_binaries.espresso_node.default_binary_name }}"
+      dest: "{{ node_binaries.espresso_node.dest_binary_name }}"
+    - src: "{{ node_binaries.staking_cli.default_binary_name }}"
+      dest: "{{ node_binaries.staking_cli.dest_binary_name }}"
+    - src: "{{ node_binaries.keygen.default_binary_name }}"
+      dest: "{{ node_binaries.keygen.dest_binary_name }}"
+  notify:
+    - Restart service
+
+- name: Clean up the temporary repository directory
+  ansible.builtin.file:
+    path: "{{ tmp_dir }}/{{ project }}"
+    state: absent
