@@ -27,10 +27,10 @@
     remote_src: true
     force: true
   loop:
-    - src: "{{ node_service_default_binary_name }}"
-      dest: "{{ service_identifier }}"
-    - src: "{{ node_cli_default_binary_name }}"
-      dest: "{{ service_identifier }}-cli"
+    - src: "{{ node_binaries.sequencer.default_binary_name }}"
+      dest: "{{ node_binaries.sequencer.dest_binary_name }}"
+    - src: "{{ node_binaries.staking-cli.default_binary_name }}"
+      dest: "{{ node_binaries.staking-cli.dest_binary_name }}"
   notify:
     - Restart service
 

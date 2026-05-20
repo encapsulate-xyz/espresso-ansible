@@ -9,5 +9,10 @@ node_environment_general_file_name: "{{ service_identifier }}.env"
 node_environment_secrets_file_name: "{{ service_identifier }}.secrets.env"
 
 # binary names
-node_service_default_binary_name: sequencer
-node_cli_default_binary_name: staking-cli
+node_binaries:
+  sequencer:
+    default_binary_name: "sequencer"
+    dest_binary_name: "{{ service_identifier }}"
+  staking-cli:
+    default_binary_name: "staking-cli"
+    dest_binary_name: "{{ service_identifier }}-cli"
