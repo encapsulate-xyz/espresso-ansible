@@ -2,7 +2,7 @@
 # maintains versions and can overwrite all.yml
 espresso:
   validator:
-    version: 20260512
+    version: 20260512-libp2p-fixes
     peers_list: "https://cache.main.net.espresso.network/,https://query.main.net.espresso.network/,https://query-0.main.net.espresso.network/"
     state_relay_url: "https://state-relay.main.net.espresso.network"
     cdn_endpoint: "cdn.main.net.espresso.network:1737"
