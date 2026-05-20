@@ -26,3 +26,4 @@ espresso:
     ports:
       api_port: 8088
       p2p_port: 4455
+      cliquent_port: 9977
