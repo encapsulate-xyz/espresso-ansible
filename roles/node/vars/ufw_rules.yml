@@ -11,3 +11,9 @@ node_ufw_rules:
     rule: allow
     from: any
     comment: p2p_port_udp
+
+  - port: "{{ espresso.validator.ports.api_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: api_port
