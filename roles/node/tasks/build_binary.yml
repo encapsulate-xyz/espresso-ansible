@@ -8,7 +8,7 @@
 
 - name: Build the binary
   ansible.builtin.command:
-    cmd: cargo build -p sequencer -p staking-cli --release
+    cmd: cargo build -p espresso-node --bin espresso-node -p staking-cli --bin staking-cli --release
     chdir: "{{ tmp_dir }}/{{ project }}"
   register: build_binary
   changed_when: false
@@ -27,10 +27,10 @@
     remote_src: true
     force: true
   loop:
-    - src: "{{ node_binaries.sequencer.default_binary_name }}"
-      dest: "{{ node_binaries.sequencer.dest_binary_name }}"
-    - src: "{{ node_binaries.staking-cli.default_binary_name }}"
-      dest: "{{ node_binaries.staking-cli.dest_binary_name }}"
+    - src: "{{ node_binaries.espresso_node.default_binary_name }}"
+      dest: "{{ node_binaries.espresso_node.dest_binary_name }}"
+    - src: "{{ node_binaries.staking_cli.default_binary_name }}"
+      dest: "{{ node_binaries.staking_cli.dest_binary_name }}"
   notify:
     - Restart service
 
