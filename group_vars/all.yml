@@ -23,6 +23,7 @@ rust:
 espresso:
   validator:
     source_url: https://github.com/EspressoSystems/espresso-network
+    docker_source_url: ghcr.io/espressosystems/espresso-sequencer/sequencer
     ports:
       api_port: 8088
       p2p_port: 4455

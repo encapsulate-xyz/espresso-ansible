@@ -18,6 +18,10 @@
   ansible.builtin.include_tasks: build_binary.yml
   when: build_binary | default(true) | bool
 
+- name: Include extract binaries from docker image task
+  ansible.builtin.include_tasks: extract_binaries.yml
+  when: not (build_binary | default(true) | bool)
+
 - name: Copy genesis file
   ansible.builtin.copy:
     src: "{{ env }}/mainnet.toml"
