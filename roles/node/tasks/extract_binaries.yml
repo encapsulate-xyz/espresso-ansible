@@ -1,0 +1,37 @@
+---
+- name: Create Docker container and copy binary
+  vars:
+    container_name: espresso
+  block:
+    - name: Create temporary espresso container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ espresso.validator.docker_source_url }}:{{ espresso.validator.version }}"
+        state: present
+        recreate: true
+
+    - name: Copy espresso binary
+      ansible.builtin.shell: |
+        docker cp {{ container_name }}:/bin/espresso-node-postgres {{ node_bin_dir }}/{{ service_identifier }}
+      args:
+        executable: /bin/bash
+      register: copy_result
+      changed_when: copy_result.rc == 0
+      failed_when:
+        - copy_result.rc != 0
+        - "'No such container' in copy_result.stderr"
+
+  always:
+    - name: Remove espresso container
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        state: absent
+
+- name: Ensure binary has the correct permissions
+  ansible.builtin.file:
+    path: "{{ node_bin_dir }}/{{ service_identifier }}"
+    owner: root
+    group: root
+    mode: "0755"
+  notify:
+    - Restart service
