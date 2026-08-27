@@ -17,3 +17,9 @@ node_ufw_rules:
     rule: allow
     from: any
     comment: api_port
+
+  - port: "{{ espresso.validator.ports.cliquent_port }}"
+    proto: tcp
+    rule: allow
+    from: any
+    comment: cliquent_port
