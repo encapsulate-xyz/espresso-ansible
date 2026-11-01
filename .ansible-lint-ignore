@@ -1,0 +1,3 @@
+# This file contains ignores rule violations for ansible-lint
+group_vars/mainnet.yml yaml[trailing-spaces]
+roles/node/tasks/build_binary.yml var-naming[no-role-prefix]
